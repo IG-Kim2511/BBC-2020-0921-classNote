@@ -1,0 +1,139 @@
+/* JS 36. C 33 */
+/*Global */
+
+:root {
+  /* color */
+
+  --test-color: khaki;
+
+  --color-white: #ffffff;
+
+  --color-light-white: #eeeeee;
+
+  --color-dark-white: #bdbdbd;
+
+  --color-black: #000000;
+
+  --color-grey: #616161;
+
+  --color-light-grey: #7c7979;
+
+  --color-dark-grey: #4d4d4d;
+
+  --color-blue: #2b81e4;
+
+  --color-yellow: #fff7d1;
+
+  --color-orange: #feb546;
+
+  --color-strong-orange: #dc2f02;
+
+  --color-light-mint: #cbf3f0;
+
+  /* Font size */
+  /* 16px = 1rem = 100% */
+
+  --font-huge: 48px;
+
+  --font-big: 28px;
+
+  --font-larger: 18px;
+
+  --font-normal-1rem: 16px;
+
+  --font-small: 14px;
+
+  /* Font weight */
+  /* 400=normal, 700=bold */
+
+  --weight-bold: 700;
+
+  --weight-semi-bold: 600;
+
+  --weight-normal: 400;
+
+  /* Size */
+  /* 4px=0.5rem 가장  대중적 */
+  --size-border-radius-normal-4px: 0.5rem;
+
+  --size-border-radius-test: 1rem;
+
+  /* Animation */
+  /* 300ms=0.3s 가장 대중적임*/
+  --animation_duration-normal-300ms: 0.3s;
+
+  /* 연습을 위해...1초로 설정 */
+  --animation_duration-test: 1s;
+}
+
+/* Universal tags */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+li {
+  list-style: none;
+}
+button {
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+/* Typography */
+h1 {
+  font-size: var(--font-large);
+  font-weight: var(--weight-bold);
+  color: var(--color-black);
+  margin: 16px 0;
+}
+h2 {
+  font-size: var(--font-medium);
+  font-weight: var(--weight-semi-bold);
+  color: var(--color-black);
+  margin: 8px 0;
+}
+h3 {
+  font-size: var(--font-regular);
+  font-weight: var(--font-regular);
+  color: var(--color-black);
+  margin: 8px 0;
+}
+p {
+  font-size: var(--font-regular);
+  font-weight: var(--font-regular);
+  color: var(--color-black);
+  margin: 4px 0;
+}
+
+/* Navbar */
+#navbar {
+}
+
+/* [responsive] for below 768px screen width */
+
+@media screen and (max-width: 768px) {
+  :root {
+    /* Font size */
+
+    --font-large: 30px;
+
+    --font-medium: 18px;
+
+    --font-regular: 16px;
+
+    --font-small: 14px;
+
+    --font-micro: 12px;
+  }
+}
