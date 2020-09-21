@@ -1,16 +1,85 @@
 html {
-	font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
 }
 body {
-	margin: 0;
+  margin: 0;
 }
-div, section, header, footer, p, h1, h2 {
-	box-sizing: border-box;
+div,
+section,
+header,
+footer,
+p,
+h1,
+h2 {
+  /* T: padding, line 값 모두 합쳐서 width, height에 포함되게 함 */
+  box-sizing: border-box;
 }
 a {
-	color: royalblue;
+  color: royalblue;
 }
 img {
-	max-width: 100%;
-	height: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+/*  */
+
+/* 텍스트 width 넣음 */
+.global-width {
+  max-width: 620px;
+  /* T: center align */
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Images : image는 다 겹쳐있고, 그위로 텍스트가 움직임*/
+.graphic-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 100vw;
+  height: 100vh;
+}
+
+/*c 01 9:30 : image가 화면 top에 닿을때 image scroll이 멈추고 text만 scroll됨
+
+전체 image container에  position: sticky */
+
+.scroll-graphic {
+  position: sticky;
+  top: 0;
+  /* sticky는 높이가 지정되지 않음.. 따로 지정을 해줌 */
+  height: 100vh;
+}
+
+/* c 01, 12:00 : text가 image위에서 scroll 됨 */
+/* T: position 기본값은 static, 
+scroll-text가 .scroll-graphic보다  더 밑에 코딩되어있어서 , 
+더 위로올라와서 보임
+, 그냥 여차하면 z-index 쓰면 됨
+*/
+.scroll-text {
+  position: relative;
+}
+
+/* 말풍선 */
+.step {
+  /* 말풍선 간격: 창사이즈의 60%높이 */
+  margin-bottom: 60vh;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  /* 살짝 투명한 흰색 */
+  background: rgba(255, 255, 255, 0.8);
+  /* left tip blur */
+  box-shadow: rgba(0, 0, 0, 0.3) 0 0 3px;
+}
+
+/* img에 뷰포트 사이즈에 맞게 높이 제한 */
+.scene-img {
+  max-height: 100vh;
 }
