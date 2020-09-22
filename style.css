@@ -44,6 +44,15 @@ img {
 
   width: 100vw;
   height: 100vh;
+
+  /* css 01 */
+  opacity: 0;
+  transition: 0.5s;
+}
+
+/* css 01 */
+.visible {
+  opacity: 1;
 }
 
 /*c 01 9:30 : image가 화면 top에 닿을때 image scroll이 멈추고 text만 scroll됨
