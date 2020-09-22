@@ -4,6 +4,7 @@
 
 (() => {
   //● js 02 : `data-index=''` 넣기
+  //
   // 1. 말풍선이 정해진 위치에 도달하면 이미지가 바뀌게
   // 2. 말풍선(.step)- 이미지(.graphic-item)에 data 같은 이름 붙여서 묶어줌
   // 4. data-name""을 노가다로 일일이 붙이기보다 js loop 사용하는게 좋음
@@ -12,6 +13,10 @@
   const graphicElems = document.querySelectorAll(".graphic-item");
 
   for (let i = 0; i < stepElems.length; i++) {
+    // console.log(stepElems[i]);
+
+    // stepElems[i].setAttribute('data-index',i);   <--같은뜻
+
     stepElems[i].dataset.index = i;
 
     graphicElems[i].dataset.index = i;
@@ -40,6 +45,7 @@
         boundingRect.top > window.innerHeight * 0.1 &&
         boundingRect.top < window.innerHeight * 0.8
       ) {
+        // step의 dataset의 index 확인
         // console.log(step.dataset.index);
 
         if (currentItem) {
