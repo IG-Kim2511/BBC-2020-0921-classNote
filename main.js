@@ -12,7 +12,22 @@
   const stepElems = document.querySelectorAll(".step");
   const graphicElems = document.querySelectorAll(".graphic-item");
 
+// js 02-23 .intersectionObserver
+// observe로 관찰하는 객체들(stepElems[i])이
+// 사라지거나 , 새로 나올때
+// 그 시점마다 callback 함수가 실행이 됨
+
+// 현재 출력한 index + 이전,이후 index 3개만 체크하기
+
+
+const io = new IntersectionObserver((entries,observer)=>{
+  console.log(entries);
+});
+
   for (let i = 0; i < stepElems.length; i++) {
+
+    io.observe(stepElems[i]);
+
     // console.log(stepElems[i]);
 
     // stepElems[i].setAttribute('data-index',i);   <--같은뜻
@@ -30,8 +45,21 @@
   // 지금활성화된 이미지를 변수(currentItem)에 넣고, 그 변수를 지우고, 다음 이미지를 호출함
   // currentItem이 있으면 currentItem에서 .visible 삭제
 
-  let currentItem;
+  // ● js 06 better structure .visible
+  let currentItem = graphicElems[0];
 
+  function activate() {
+    currentItem.classList.add("visible");
+  }
+  function inactivate() {
+    currentItem.classList.remove("visible");
+  }
+
+  // js 06 첫화면 바로 보이게하기
+  // currentItem.classList.add("visible");
+  activate();
+
+  //● js 04 scroll and image .visible
   window.addEventListener("scroll", () => {
     let step;
     let boundingRect;
@@ -49,10 +77,12 @@
         // console.log(step.dataset.index);
 
         if (currentItem) {
-          currentItem.classList.remove("visible");
+          // currentItem.classList.remove("visible");
+          inactivate();
         }
         currentItem = graphicElems[step.dataset.index];
-        currentItem.classList.add("visible");
+        // currentItem.classList.add("visible");
+        activate();
       }
     }
   });
