@@ -12,20 +12,23 @@
   const stepElems = document.querySelectorAll(".step");
   const graphicElems = document.querySelectorAll(".graphic-item");
 
-// js 02-23 .intersectionObserver
-// observe로 관찰하는 객체들(stepElems[i])이
-// 사라지거나 , 새로 나올때
-// 그 시점마다 callback 함수가 실행이 됨
+  // js 02-23 .intersectionObserver
+  // observe로 관찰하는 객체들(stepElems[i])이
+  // 사라지거나 , 새로 나올때
+  // 그 시점마다 callback 함수가 실행이 됨
 
-// 현재 출력한 index + 이전,이후 index 3개만 체크하기
+  // 현재 출력한 index + 이전,이후 index 3개만 체크하기
 
+  let ioIndex;
 
-const io = new IntersectionObserver((entries,observer)=>{
-  console.log(entries);
-});
+  const io = new IntersectionObserver((entries, observer) => {
+    // console.log(entries);
+    // console.log(entries[0].target.dataset.index);
+    ioIndex = entries[0].target.dataset.index * 1;
+    console.log(ioIndex);
+  });
 
   for (let i = 0; i < stepElems.length; i++) {
-
     io.observe(stepElems[i]);
 
     // console.log(stepElems[i]);
@@ -63,8 +66,15 @@ const io = new IntersectionObserver((entries,observer)=>{
   window.addEventListener("scroll", () => {
     let step;
     let boundingRect;
-    for (let i = 0; i < stepElems.length; i++) {
+
+    // ●js 02-31
+    // for (let i = 0; i < stepElems.length; i++) {
+    for (let i = ioIndex - 1; i < ioIndex + 2; i++) {
       step = stepElems[i];
+
+      // step에 값이 없으면  continue로 패스하고 다음 것 출력
+      if (!step) continue;
+
       boundingRect = step.getBoundingClientRect();
       // console.log(boundingRect);
       // console.log(boundingRect.top);
@@ -76,14 +86,14 @@ const io = new IntersectionObserver((entries,observer)=>{
         // step의 dataset의 index 확인
         // console.log(step.dataset.index);
 
-        if (currentItem) {
-          // currentItem.classList.remove("visible");
-          inactivate();
-        }
+        // currentItem.classList.remove("visible");
+        inactivate();
+
         currentItem = graphicElems[step.dataset.index];
         // currentItem.classList.add("visible");
         activate();
       }
     }
   });
+  activate();
 })();
