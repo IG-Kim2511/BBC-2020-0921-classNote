@@ -26,7 +26,7 @@
     // console.log(entries[0].target.dataset.index);
 
     inIndex = entries[0].target.dataset.index * 1;
-    // console.log(ioIndex);
+    console.log(ioIndex);
   });
 
   for (let i = 0; i < stepElems.length; i++) {
