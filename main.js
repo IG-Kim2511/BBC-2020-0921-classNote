@@ -6,10 +6,28 @@
   //●js 03-03 새가 움직임.특정 이미지내에서
 
   const actions = {
-    birdFlies() {
-      document.querySelector(
-        `[data-index="2"] .bird`
-      ).style.transform = `translateX(${window.innerWidth}px)`;
+    birdFlies(key) {
+      if (key) {
+        document.querySelector(
+          `[data-index="2"] .bird`
+        ).style.transform = `translateX(${window.innerWidth}px)`;
+      } else {
+        document.querySelector(
+          `[data-index="2"] .bird`
+        ).style.transform = `translateX(-100%})`;
+      }
+    },
+    birdFlies2(key) {
+      if (key) {
+        document.querySelector(
+          `[data-index="5"] .bird`
+        ).style.transform = `translateX(${window.innerWidth}px,${
+          -window.innerHeight * 0.7}px)`;
+      } else {
+        document.querySelector(
+          `[data-index="5"] .bird`
+        ).style.transform = `translateX(-100%})`;
+      }
     },
   };
 
@@ -64,11 +82,14 @@
   function activate(action) {
     currentItem.classList.add("visible");
     if (action) {
-      actions[action]();
+      actions[action](true);
     }
   }
-  function inactivate() {
+  function inactivate(action) {
     currentItem.classList.remove("visible");
+    if (action) {
+      actions[action](false);
+    }
   }
 
   // js 06 첫화면 바로 보이게하기
@@ -108,5 +129,14 @@
       }
     }
   });
+
+  // js 03-21 새로고침하면 최상단 첫화면
+
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      scrollTo(0, 0);
+    }, 100);
+  });
+
   activate();
 })();

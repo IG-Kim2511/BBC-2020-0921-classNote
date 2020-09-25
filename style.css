@@ -48,6 +48,8 @@ img {
   /* css 01 */
   opacity: 0;
   transition: 0.5s;
+
+  will-change: opacity;
 }
 
 /* css 01 */
@@ -64,6 +66,9 @@ img {
   top: 0;
   /* sticky는 높이가 지정되지 않음.. 따로 지정을 해줌 */
   height: 100vh;
+
+  /* x축 스크롤 지움 */
+  overflow: hidden;
 }
 
 /* c 01, 12:00 : text가 image위에서 scroll 됨 */
@@ -93,9 +98,24 @@ scroll-text가 .scroll-graphic보다  더 밑에 코딩되어있어서 ,
   max-height: 100vh;
 }
 
-.bird{
+.bird {
   position: absolute;
   left: 0;
   bottom: 70%;
   width: 100px;
+
+  /* js 03-03 */
+
+  transform: translateX(-100%);
+  transition: 1.5s 0.5s linear;
+}
+
+[data-index="5"] .bird {
+  left: 30%;
+  bottom: 30%;
+}
+
+.global-footer {
+  padding: 2rem 0;
+  text-align: center;
 }
