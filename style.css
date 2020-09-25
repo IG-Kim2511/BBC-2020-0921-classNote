@@ -92,3 +92,10 @@ scroll-text가 .scroll-graphic보다  더 밑에 코딩되어있어서 ,
 .scene-img {
   max-height: 100vh;
 }
+
+.bird{
+  position: absolute;
+  left: 0;
+  bottom: 70%;
+  width: 100px;
+}

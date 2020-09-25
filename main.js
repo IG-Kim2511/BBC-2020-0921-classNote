@@ -3,9 +3,15 @@
 // 함수안에서 만든 변수...밖에서 쓸수없음
 
 (() => {
-  //●js 03-03
+  //●js 03-03 새가 움직임.특정 이미지내에서
 
-  const actions = {};
+  const actions = {
+    birdFlies() {
+      document.querySelector(
+        `[data-index="2"] .bird`
+      ).style.transform = `translateX(${window.innerWidth}px)`;
+    },
+  };
 
   //● js 02 : `data-index=''` 넣기
   //
@@ -55,8 +61,11 @@
   // ● js 06 better structure .visible
   let currentItem = graphicElems[0];
 
-  function activate() {
+  function activate(action) {
     currentItem.classList.add("visible");
+    if (action) {
+      actions[action]();
+    }
   }
   function inactivate() {
     currentItem.classList.remove("visible");
@@ -95,7 +104,7 @@
 
         currentItem = graphicElems[step.dataset.index];
         // currentItem.classList.add("visible");
-        activate();
+        activate(currentItem.dataset.action);
       }
     }
   });
