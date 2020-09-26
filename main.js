@@ -1,7 +1,3 @@
-// 즉시실행 함수 Immediately-invoked function expression
-// 전역변수를 안쓰기위해서 씀
-// 함수안에서 만든 변수...밖에서 쓸수없음
-
 (() => {
   //●js 03-03 새가 움직임.특정 이미지내에서
 
@@ -22,7 +18,8 @@
         document.querySelector(
           `[data-index="5"] .bird`
         ).style.transform = `translateX(${window.innerWidth}px,${
-          -window.innerHeight * 0.7}px)`;
+          -window.innerHeight * 0.7
+        }px)`;
       } else {
         document.querySelector(
           `[data-index="5"] .bird`
@@ -31,7 +28,7 @@
     },
   };
 
-  //● js 02 : `data-index=''` 넣기
+  //● js 02-03 : `data-index=''` 넣기 to .step , .graphic-item
   //
   // 1. 말풍선이 정해진 위치에 도달하면 이미지가 바뀌게
   // 2. 말풍선(.step)- 이미지(.graphic-item)에 data 같은 이름 붙여서 묶어줌
@@ -40,7 +37,7 @@
   const stepElems = document.querySelectorAll(".step");
   const graphicElems = document.querySelectorAll(".graphic-item");
 
-  // js 02-23 .intersectionObserver
+  //● js 02-23 .intersectionObserver
   // observe로 관찰하는 객체들(stepElems[i])이
   // 사라지거나 , 새로 나올때
   // 그 시점마다 callback 함수가 실행이 됨
@@ -68,17 +65,18 @@
     graphicElems[i].dataset.index = i;
   }
 
-  //● js 04: 말풍선 어느정도 높이 도달할때, 뒤의 이미지 바꾸기
+  //● js 02-08: 말풍선 어느정도 높이 도달할때, 뒤의 이미지 바꾸기
   // getboundingclientrect :  https://iankim2511.tistory.com/13
   // getBoundingClientRect 엘리먼트 위치값 알아냄
-  // 윈도우높이의 10%~80% 사이에서 말풍선,이미지 호출 : step의 dataset의 index호출
-
-  // 지금활성화된 이미지를 변수(currentItem)에 넣고, 그 변수를 지우고, 다음 이미지를 호출함
+  // (4) 윈도우높이의 10%~80% 사이에서 말풍선,이미지 호출 : step의 dataset의 index호출
+  //(5) step의 dataset의 index 확인
+  // (6) 스크롤에따라 이미지 호출하기  : 활성화된 이미지를 currentItem에 넣고, currentItem을 지우고, 다음 이미지를 호출함
   // currentItem이 있으면 currentItem에서 .visible 삭제
 
   // ● js 06 better structure .visible
   let currentItem = graphicElems[0];
 
+  // JS 03-03
   function activate(action) {
     currentItem.classList.add("visible");
     if (action) {
@@ -92,7 +90,7 @@
     }
   }
 
-  // js 06 첫화면 바로 보이게하기
+  // js 06 visible .scene-img
   // currentItem.classList.add("visible");
   activate();
 
@@ -130,7 +128,7 @@
     }
   });
 
-  // js 03-21 새로고침하면 최상단 첫화면
+  // ●js 03-21 새로고침하면 최상단 첫화면
 
   window.addEventListener("load", () => {
     setTimeout(() => {
